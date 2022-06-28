@@ -18,8 +18,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Clients - API')
     .setDescription('CRUD Test')
-    .setVersion('1.0')
-    .addTag('cats')
+    .setVersion('0.1')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
