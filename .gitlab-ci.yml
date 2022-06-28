@@ -1,0 +1,18 @@
+image: dokku/ci-docker-image
+
+stages:
+  - deploy
+
+variables:
+  GIT_DEPTH: 0
+  GIT_REMOTE_URL: $GIT_REMOTE_URL
+
+deploy:
+  stage: deploy
+  only:
+    - master
+  variables:
+    GIT_REMOTE_URL: $GIT_REMOTE_URL
+  script: dokku-deploy
+  after_script: [dokku-unlock]
+  interruptible: true
