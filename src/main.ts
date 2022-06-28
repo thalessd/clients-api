@@ -5,6 +5,7 @@ import * as compression from 'compression';
 import helmet from 'helmet';
 import { ValidationPipe } from '@nestjs/common';
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -13,6 +14,17 @@ async function bootstrap() {
   const port = configService.get<number>('port');
 
   const httpAdapterHost = app.get(HttpAdapterHost);
+
+  const config = new DocumentBuilder()
+    .setTitle('Clients - API')
+    .setDescription('CRUD Test')
+    .setVersion('1.0')
+    .addTag('cats')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+
+  SwaggerModule.setup('docs', app, document);
 
   app.use(helmet());
   app.use(compression());
