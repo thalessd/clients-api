@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import appConfig from './config/app.config';
 import { Neo4jModule, Neo4jConfig } from 'nest-neo4j/dist';
+import { ClientsModule } from './modules/clients/clients.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { Neo4jModule, Neo4jConfig } from 'nest-neo4j/dist';
         },
       inject: [ConfigService],
     }),
+    ClientsModule,
   ],
 })
 export class AppModule {}
