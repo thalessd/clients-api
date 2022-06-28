@@ -13,3 +13,6 @@ npm install
 
 npm run start:dev
 ```
+
+# Docs
+[API Docs](http://localhost:5000/docs)
