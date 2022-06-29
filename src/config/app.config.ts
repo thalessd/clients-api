@@ -1,5 +1,8 @@
 export default () => ({
   port: parseInt(process.env.PORT, 10) || 5000,
+  cors: {
+    origin: (process.env.CORS_ORIGIN ?? '').split(','),
+  },
   neo4j: {
     scheme: process.env.NEO4J_SCHEME,
     host: process.env.NEO4J_HOST,

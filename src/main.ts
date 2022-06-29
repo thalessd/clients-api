@@ -12,6 +12,7 @@ async function bootstrap() {
 
   const configService = app.get(ConfigService);
   const port = configService.get<number>('port');
+  const corsOrigin = configService.get<string[]>('cors.origin');
 
   const httpAdapterHost = app.get(HttpAdapterHost);
 
@@ -29,6 +30,8 @@ async function bootstrap() {
   app.use(compression());
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapterHost));
   app.useGlobalPipes(new ValidationPipe({ whitelist: true, transform: true }));
+
+  app.enableCors({ origin: corsOrigin });
 
   await app.listen(port);
 }
