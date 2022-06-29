@@ -16,3 +16,8 @@ npm run start:dev
 
 # Docs
 [API Docs](http://localhost:5000/docs)
+
+# Hosts
+
+### Local: <http://localhost:5000>
+### Production: <https://clients-api.app.tcndev.com>
